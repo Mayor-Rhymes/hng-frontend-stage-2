@@ -8,8 +8,7 @@ import SearchBox from "@/components/SearchBox";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
-import {useRouter} from 'next/navigation';
-
+import { useRouter } from "next/navigation";
 
 export interface IMovie {
   id: number;
@@ -35,7 +34,6 @@ const fetchHandler = async (url: string, token: string) => {
   return data.results.slice(0, 10);
 };
 
-
 const fetchHandler2 = async (url: string, token: string) => {
   const response = await axios.get(url, {
     headers: {
@@ -49,46 +47,51 @@ const fetchHandler2 = async (url: string, token: string) => {
 };
 
 export default function Home() {
-
   const router = useRouter();
   const searchUrl = process.env.NEXT_PUBLIC_API_URL as string;
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const { data, error, isLoading } = useSWR([URL, TOKEN], ([URL, TOKEN]) =>
     fetchHandler(URL, TOKEN)
   );
 
   const handleSearch = async () => {
-     
-     const results = await fetchHandler2(
-       `${searchUrl}search/movie?query=${search}&include_adult=false`, 
-       TOKEN
-     )
-     
-     if(results){
+    if (search) {
+      const results = await fetchHandler2(
+        `${searchUrl}search/movie?query=${search}&include_adult=false`,
+        TOKEN
+      );
 
-        router.push(`/movies?search=${search}`)
-     }
-     console.log(results);
-
-
-
-  }
-
- 
-
+      if (results) {
+        router.push(`/movies?search=${search}`);
+      }
+    }
+  };
 
   return (
     <main className="w-[100%] relative">
-      <Navbar search={search} setSearch={setSearch} handleSearch={handleSearch}/>
+      <Navbar
+        search={search}
+        setSearch={setSearch}
+        handleSearch={handleSearch}
+      />
 
       <div className="w-full gap-3 flex justify-center items-center absolute top-20 px-4 md:hidden lg:hidden">
         <SearchBox
           value={search}
           onChange={(event) => setSearch(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              handleSearch();
+            }
+          }}
           placeholder="What do you want to watch?"
           className="h-[36px] border rounded-md border-white px-[6px] py-[10px] outline-none bg-transparent text-white"
         />
-        <Search className="text-white cursor-pointer" xlinkTitle="Search" onClick={handleSearch}/>
+        <Search
+          className="text-white cursor-pointer"
+          xlinkTitle="Search"
+          onClick={handleSearch}
+        />
       </div>
 
       <div className="bg-poster-image bg-center h-[600px] w-full flex md:pl-10 lg:pl-20 place-items-center lg:place-content-start place-content-center">

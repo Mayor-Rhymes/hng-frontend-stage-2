@@ -39,7 +39,7 @@ export default function Page() {
     ([searchUrl, TOKEN]) => fetchHandler2(searchUrl, TOKEN)
   );
 
-  console.log(data);
+  
 
   if (error) {
     return <p className="text-center text-red-400 text-4xl">Error</p>;
