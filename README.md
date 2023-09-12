@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### HNG FRONTEND TASK STAGE TWO
 
-## Getting Started
+This project was created in fulfillment of the frontend stage two task requirements for HNG 10.
 
-First, run the development server:
+##### Technologies Used?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- [Next.js](https://nextjs.org)
+- [Tailwindcss](https://tailwindcss.com)
+- [tmdb](https://www.themoviedb.org/)
+
+
+#### How to Setup?
+
+First, clone the project by copying the following command
+
+`git clone `
+
+Please make sure you have git installed before running this command
+
+After cloning the project from github, copy the following
+
+`npm install`
+
+This command will install all the dependencies required for this project.
+
+After successful installation, please go to the tmdb website to get your own api url and token. After this is done, you can create a `.env.local` file, which will contain your environment variables
+
+```env
+
+   
+NEXT_PUBLIC_API_TOKEN = token
+NEXT_PUBLIC_API_URL = Url
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The token and Url should be replace with your own tmdb url and token. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Once this is done, you can copy the following command
 
-## Learn More
+`npm run dev`
 
-To learn more about Next.js, take a look at the following resources:
+The above command will finally run the project on your local machine.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
