@@ -12,16 +12,11 @@ export interface MovieExplain extends IMovie {
    runtime: number,
    overview: string;
    vote_average: number;
-   genres: Genre[];
    backdrop_path: string;
 }
 
 
-interface Genre {
 
-    id: number;
-    name: string;
-}
 
 
 

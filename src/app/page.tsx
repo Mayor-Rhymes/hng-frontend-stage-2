@@ -15,6 +15,13 @@ export interface IMovie {
   title: string;
   release_date: string;
   poster_path: string;
+  genres: Genre[];
+}
+
+interface Genre {
+
+  id: number;
+  name: string;
 }
 
 const URL = `${
