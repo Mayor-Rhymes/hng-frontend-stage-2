@@ -26,7 +26,7 @@ interface Genre {
 
 const URL = `${
   process.env.NEXT_PUBLIC_API_URL as string
-}movie/popular?language=en-US&page=1&`;
+}movie/top_rated?language=en-US&page=1&`;
 const TOKEN = process.env.NEXT_PUBLIC_API_TOKEN as string;
 
 const fetchHandler = async (url: string, token: string) => {
@@ -101,8 +101,19 @@ export default function Home() {
         />
       </div>
 
-      <div className="bg-poster-image bg-center h-[600px] w-full flex md:pl-10 lg:pl-20 place-items-center lg:place-content-start place-content-center">
+      <div className="bg-poster-image bg-center h-[600px] w-full flex flex-col lg:flex-row md:pl-10 lg:pl-20 place-items-center place-content-center lg:justify-between lg:pr-10">
         <DescriptionBox />
+
+
+        <div className="hidden lg:flex lg:flex-col text-slate-200 cursor-pointer">
+
+          <p className="hover:text-xl transition-all">1</p>
+          <p className="hover:text-xl transition-all">2</p>
+          <p className="hover:text-xl transition-all">3</p>
+          <p className="hover:text-xl transition-all">4</p>
+          <p className="hover:text-xl transition-all">5</p>
+
+        </div>
       </div>
 
       <div className="flex justify-between lg:px-10 mt-10 md:gap-0 lg:gap-0 items-center">
