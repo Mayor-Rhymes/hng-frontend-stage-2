@@ -23,6 +23,8 @@ interface Genre {
     name: string;
 }
 
+
+
 const URL = `${
     process.env.NEXT_PUBLIC_API_URL as string
   }movie/popular?language=en-US&page=1&`;
