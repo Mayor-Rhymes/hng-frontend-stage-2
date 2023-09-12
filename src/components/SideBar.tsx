@@ -6,16 +6,16 @@ import Link from "next/link";
 
 export default function SideBar() {
   return (
-    <div className="h-screen w-[40%] hidden py-4 gap-4 border lg:flex flex-col justify-evenly border-slate-300 rounded-tr-[40px] rounded-br-[40px]">
+    <div className="min-h-screen w-[40%] hidden py-4 gap-4 border lg:flex flex-col justify-evenly border-slate-300 rounded-tr-[40px] rounded-br-[40px]">
       <div className="flex items-center justify-center gap-3">
         <Image src="/images/tv.svg" alt="tv-image" width="50" height="50" />
         <p className="text-black text-lg">MovieBox</p>
       </div>
 
       <div className="flex flex-col gap-4">
-        <Iconpair>
+        <Iconpair href="/">
           <Home />
-          <Link href="/">Home</Link>
+          <p>Home</p>
         </Iconpair>
         <Iconpair>
           <Video />

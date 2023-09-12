@@ -39,30 +39,37 @@ export default function Page() {
     ([searchUrl, TOKEN]) => fetchHandler2(searchUrl, TOKEN)
   );
 
-  
-
   if (error) {
-    return <p className="text-center text-red-400 text-4xl">Error</p>;
+    return <p className="text-center text-red-400 text-4xl mt-10">Error</p>;
   } else if (isLoading) {
-    return <p className="text-center text-4xl">Loading...</p>;
+    return <p className="text-center text-4xl mt-10">Loading...</p>;
   } else if (data) {
     return (
       <div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center pt-5">
           <button
             type="button"
-            className="bg-videoRed text-white px-3 py-2 rounded-md flex items-center gap-2 justify-center"
+            className="bg-videoRed text-white hover:shadow-2xl hover:-translate-y-4 transition-all px-3 py-2 rounded-md flex items-center gap-2 justify-center"
             onClick={handleBack}
           >
             <ChevronLeft />
             Go Back
           </button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 mt-20">
-          {data?.results.map((movie: IMovie) => (
-            <Card key={movie.id} movie={movie} />
-          ))}
-        </div>
+        {data?.results.length === 0 ? (
+          <div className="flex flex-col justify-center h-[400px]">
+            <h4 className="text-videoRed text-3xl text-center">
+              There are no search results for the title of the movie you
+              searched for. 🥲
+            </h4>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 mt-20">
+            {data?.results.map((movie: IMovie) => (
+              <Card key={movie.id} movie={movie} />
+            ))}
+          </div>
+        )}
 
         <Footer />
       </div>
