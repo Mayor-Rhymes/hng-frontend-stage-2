@@ -2,6 +2,7 @@
 
 This project was created in fulfillment of the frontend stage two task requirements for HNG 10.
 
+Url: https://hng-frontend-stage-2.vercel.app/
 ##### Technologies Used?
 
 - [Next.js](https://nextjs.org)
@@ -13,7 +14,7 @@ This project was created in fulfillment of the frontend stage two task requireme
 
 First, clone the project by copying the following command
 
-`git clone `
+`git clone https://github.com/Mayor-Rhymes/hng-frontend-stage-2`
 
 Please make sure you have git installed before running this command
 
