@@ -14,7 +14,9 @@ export default function Page() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const search = searchParams.get("search");
-  const searchUrl = `${process.env.NEXT_PUBLIC_API_URL}search/movie?query=${search}&include_adult=false`;
+  const searchUrl = search
+    ? `${process.env.NEXT_PUBLIC_API_URL}search/movie?query=${search}&include_adult=false`
+    : `${process.env.NEXT_PUBLIC_API_URL}movie/top_rated?language=en-US`;
 
   const TOKEN = process.env.NEXT_PUBLIC_API_TOKEN as string;
 

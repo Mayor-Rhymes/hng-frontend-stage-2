@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { IMovie } from "@/app/page";
 import Mainscreen from "@/components/Mainscreen";
 import SideBar from "@/components/SideBar";
@@ -22,7 +22,7 @@ const TOKEN = process.env.NEXT_PUBLIC_API_TOKEN as string;
 const fetchHandler = async (url: string, token: string) => {
   const response = await axios.get(url, {
     headers: {
-      accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   });
@@ -33,15 +33,31 @@ const fetchHandler = async (url: string, token: string) => {
 
 export default function Page({ params }: { params: { id: number } }) {
   const URL = `${process.env.NEXT_PUBLIC_API_URL as string}movie/${params.id}`;
+  const VIDURL = `${process.env.NEXT_PUBLIC_API_URL as string}movie/${
+    params.id
+  }/videos`;
 
+  const [video, setVideo] = useState<any>({});
   const { data, error, isLoading } = useSWR([URL, TOKEN], ([URL, TOKEN]) =>
     fetchHandler(URL, TOKEN)
   );
 
+  const handleVideo = async () => {
+    const data = await fetchHandler(VIDURL, TOKEN);
+
+    if (data) {
+      setVideo(data.results[2].key);
+    }
+  };
+
+  useEffect(() => {
+    handleVideo();
+  }, []);
+
   return (
     <div className="flex justify-between">
       <SideBar />
-      <Mainscreen movie={data} />
+      <Mainscreen movie={data} videoId={video} />
     </div>
   );
 }

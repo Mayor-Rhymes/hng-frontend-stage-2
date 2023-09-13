@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export interface IMovie {
   id: number;
@@ -19,7 +20,6 @@ export interface IMovie {
 }
 
 interface Genre {
-
   id: number;
   name: string;
 }
@@ -32,12 +32,13 @@ const TOKEN = process.env.NEXT_PUBLIC_API_TOKEN as string;
 const fetchHandler = async (url: string, token: string) => {
   const response = await axios.get(url, {
     headers: {
-      accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   });
 
   const data = await response.data;
+
   return data.results.slice(0, 10);
 };
 
@@ -74,8 +75,6 @@ export default function Home() {
     }
   };
 
-  
-
   return (
     <main className="w-[100%] relative">
       <Navbar
@@ -96,35 +95,31 @@ export default function Home() {
           placeholder="What do you want to watch?"
           className="h-[36px] border rounded-md border-white px-[6px] py-[10px] outline-none bg-transparent text-white"
         />
-        <Search
-          className="text-white cursor-pointer"
-          xlinkTitle="Search"
-          onClick={handleSearch}
-        />
+        <Search className="text-white cursor-pointer" onClick={handleSearch} />
       </div>
 
       <div className="bg-poster-image bg-center h-[600px] w-full flex flex-col lg:flex-row md:pl-10 lg:pl-20 place-items-center place-content-center lg:justify-between lg:pr-10">
         <DescriptionBox />
 
-
         <div className="hidden lg:flex lg:flex-col text-slate-200 cursor-pointer">
-
           <p className="hover:text-xl transition-all">1</p>
           <p className="hover:text-xl transition-all">2</p>
           <p className="hover:text-xl transition-all">3</p>
           <p className="hover:text-xl transition-all">4</p>
           <p className="hover:text-xl transition-all">5</p>
-
         </div>
       </div>
 
       <div className="flex justify-between lg:px-10 mt-10 md:gap-0 lg:gap-0 items-center">
         <h4 className="text-2xl font-bold">Featured Movie</h4>
 
-        <p className="text-[#C41E3A] flex gap-3 cursor-pointer sm:animate-bounce">
+        <Link
+          className="text-[#C41E3A] flex gap-3 cursor-pointer sm:animate-bounce"
+          href="/movies"
+        >
           {" "}
           See More <ChevronRight />
-        </p>
+        </Link>
       </div>
 
       {error ? (

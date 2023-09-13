@@ -4,11 +4,10 @@ interface Props {
 
 export default function Videoview({ image_path }: Props) {
   return (
-    <div
-      className="rounded-lg h-[400px] bg-black bg-no-repeat bg-cover bg-center"
-      style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/w500/${image_path})`,
-      }}
-    ></div>
+    <iframe
+      title="youtubeview"
+      className="rounded-lg h-[400px] bg-no-repeat bg-cover bg-center"
+      src={`https://www.youtube.com/embed/${image_path}`}
+    ></iframe>
   );
 }

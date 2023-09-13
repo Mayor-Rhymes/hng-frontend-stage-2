@@ -2,15 +2,32 @@ import Videoview from "./Videoview";
 import About from "./AboutMovie";
 import Image from "next/image";
 import { MovieExplain } from "@/app/movies/[id]/page";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronLeft } from "lucide-react";
+import {useRouter} from "next/navigation";
 interface Props {
   movie: MovieExplain;
+  videoId: string;
 }
 
-export default function Mainscreen({ movie }: Props) {
+export default function Mainscreen({ movie, videoId }: Props) {
+
+
+  const router = useRouter();
+  const handleBack = () => {
+    router.back();
+  };
   return (
     <div className="flex grow flex-col px-10 pt-5 gap-4 mb-10">
-      <Videoview image_path={movie?.backdrop_path} />
+      <button
+        type="button"
+        className="bg-videoRed text-white hover:shadow-2xl hover:bg-red-900 transition-all px-3 py-2 rounded-md flex items-center gap-2 justify-center"
+        onClick={handleBack}
+      >
+        <ChevronLeft />
+        Go Back
+      </button>
+
+      <Videoview image_path={videoId} />
 
       <div className="flex flex-col lg:flex-row gap-10 ">
         <div className="flex flex-col gap-6 lg:w-[75%]">
@@ -40,16 +57,13 @@ export default function Mainscreen({ movie }: Props) {
               type="button"
               className="bg-videoRed text-white px-3 py-2 rounded-md flex items-center gap-2 justify-center"
             >
-            
               Top rated movie #65
             </button>
             <button
               type="button"
               className="px-3 py-2 rounded-md flex items-center border border-gray-300 gap-2 justify-center grow"
             >
-              
               Awards 9 nominations
-
               <ChevronDown />
             </button>
           </div>
