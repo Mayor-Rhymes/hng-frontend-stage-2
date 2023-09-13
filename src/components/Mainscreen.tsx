@@ -14,7 +14,7 @@ export default function Mainscreen({ movie, videoId }: Props) {
 
   const router = useRouter();
   const handleBack = () => {
-    router.back();
+    router.push('/');
   };
   return (
     <div className="flex grow flex-col px-10 pt-5 gap-4 mb-10">
