@@ -39,7 +39,7 @@ const fetchHandler = async (url: string, token: string) => {
   });
 
   const data = await response.data;
-  console.log(data);
+  
   return data.results.slice(0, 10);
 };
 
