@@ -19,9 +19,10 @@ export default function Card({ movie }: MovieCardProps) {
         data-testid="movie-card"
       >
         <div
-          className="bg-center w-full h-[370px] relative rounded-md"
+          className="bg-center bg-no-repeat w-full h-[370px] relative rounded-md"
           style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.poster_path})`,
+            backgroundImage: `${movie.poster_path ? `url(https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "url('/images/no-image.png')"}`,
+            
           }}
           data-testid="movie-poster"
         >

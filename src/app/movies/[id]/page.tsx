@@ -45,8 +45,8 @@ export default function Page({ params }: { params: { id: number } }) {
   const handleVideo = async () => {
     const data = await fetchHandler(VIDURL, TOKEN);
 
-    if (data) {
-      setVideo(data.results[2].key);
+    if (data.results) {
+      setVideo(data.results[2]?.key);
     }
   };
 
