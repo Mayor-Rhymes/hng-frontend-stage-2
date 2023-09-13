@@ -6,9 +6,9 @@ import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { IMovie } from "../page";
 import Card from "@/components/MovieCard";
-import Navbar from "@/components/Navbar";
 import { ChevronLeft } from "lucide-react";
 import Footer from "@/components/Footer";
+
 
 export default function Page() {
   const searchParams = useSearchParams();

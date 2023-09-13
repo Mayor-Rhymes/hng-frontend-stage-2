@@ -5,6 +5,12 @@ import Mainscreen from "@/components/Mainscreen";
 import SideBar from "@/components/SideBar";
 import axios from "axios";
 import useSWR from "swr";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "400"
+});
 
 export interface MovieExplain extends IMovie {
   runtime: number;
@@ -55,7 +61,7 @@ export default function Page({ params }: { params: { id: number } }) {
   }, []);
 
   return (
-    <div className="flex justify-between">
+    <div className={`flex justify-between ${poppins.className}`}>
       <SideBar />
       <Mainscreen movie={data} videoId={video} />
     </div>

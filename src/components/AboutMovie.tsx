@@ -29,7 +29,7 @@ export default function About({ movie }: Props) {
         ))}
       </div>
 
-      <p data-testid="movie-overview">{movie?.overview}</p>
+      <p data-testid="movie-overview" className="lg:text-[20px]">{movie?.overview}</p>
     </div>
   );
 }
