@@ -58,6 +58,7 @@ export default function Home() {
   const router = useRouter();
   const searchUrl = process.env.NEXT_PUBLIC_API_URL as string;
   const [search, setSearch] = useState("");
+  const [searchLoading, setSearchLoading] = useState(false);
   const { data, error, isLoading } = useSWR([URL, TOKEN], ([URL, TOKEN]) =>
     fetchHandler(URL, TOKEN)
   );
@@ -70,10 +71,23 @@ export default function Home() {
       );
 
       if (results) {
+        setSearchLoading(true);
         router.push(`/movies?search=${search}`);
       }
     }
   };
+
+  
+
+  if (searchLoading) {
+    return (
+      <div className="h-screen w-screen flex place-content-center place-items-center">
+        <p className="animate-ping text-4xl text-blue-700 font-extrabold">
+          Loading...
+        </p>
+      </div>
+    );
+  }
 
   return (
     <main className="w-[100%] relative">
@@ -125,7 +139,7 @@ export default function Home() {
       {error ? (
         <p className="text-center text-red-400 text-4xl">Error</p>
       ) : isLoading ? (
-        <p className="text-center text-red-400 text-4xl">Loading...</p>
+        <p className="text-center mt-20 text-red-400 text-4xl animate-bounce">Loading...</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 mt-20">
           {data.map((movie: IMovie) => (
