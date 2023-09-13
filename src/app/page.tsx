@@ -16,6 +16,7 @@ export interface IMovie {
   title: string;
   release_date: string;
   poster_path: string;
+  genre_ids?: number[];
   genres: Genre[];
 }
 
@@ -38,7 +39,7 @@ const fetchHandler = async (url: string, token: string) => {
   });
 
   const data = await response.data;
-
+  console.log(data);
   return data.results.slice(0, 10);
 };
 

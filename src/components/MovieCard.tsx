@@ -2,16 +2,26 @@
 
 import Image from "next/image";
 import { IMovie } from "@/app/page";
+import { genreMap } from "@/lib/genreMapper";
 
 import Link from "next/link";
 
 const URL = process.env.NEXT_PUBLIC_API_URL as string;
+
+// `${process.env.NEXT_PUBLIC_API_URL as string}movie/${params.id}`
 
 interface MovieCardProps {
   movie: IMovie;
 }
 
 export default function Card({ movie }: MovieCardProps) {
+  // console.log(movie.genres);
+
+  const GenreList = () =>
+    movie.genre_ids?.map((genre_id: number) => (
+      <p key={genre_id}>{genreMap[genre_id]}</p>
+    ));
+
   return (
     <Link href={`movies/${movie.id}`}>
       <div
@@ -21,8 +31,11 @@ export default function Card({ movie }: MovieCardProps) {
         <div
           className="bg-center bg-no-repeat w-full h-[370px] relative rounded-md"
           style={{
-            backgroundImage: `${movie.poster_path ? `url(https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "url('/images/no-image.png')"}`,
-            
+            backgroundImage: `${
+              movie.poster_path
+                ? `url(https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                : "url('/images/no-image.png')"
+            }`,
           }}
           data-testid="movie-poster"
         >
@@ -59,7 +72,9 @@ export default function Card({ movie }: MovieCardProps) {
             <p className="text-[10px]">97%</p>
           </div>
         </div>
-        <p className="text-slate-400">Action, Adventure, Animation</p>
+        <div className="text-slate-400 flex gap-4">
+          <GenreList />
+        </div>
       </div>
     </Link>
   );
