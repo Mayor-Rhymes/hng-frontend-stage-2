@@ -3,24 +3,23 @@ import About from "./AboutMovie";
 import Image from "next/image";
 import { MovieExplain } from "@/app/movies/[id]/page";
 import { ChevronDown, ChevronLeft } from "lucide-react";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
+import MovieSection from "./Moviessection";
 interface Props {
   movie: MovieExplain;
   videoId: string;
 }
 
 export default function Mainscreen({ movie, videoId }: Props) {
-
-
   const router = useRouter();
   const handleBack = () => {
-    router.push('/');
+    router.back();
   };
   return (
     <div className="flex grow flex-col px-10 pt-5 gap-4 mb-10">
       <button
         type="button"
-        className="bg-videoRed text-white hover:shadow-2xl hover:bg-red-900 transition-all px-3 py-2 rounded-md flex items-center gap-2 justify-center"
+        className="bg-videoRed lg:hidden text-white hover:shadow-2xl hover:bg-red-900 transition-all px-3 py-2 rounded-md flex items-center gap-2 justify-center"
         onClick={handleBack}
       >
         <ChevronLeft />
@@ -98,6 +97,8 @@ export default function Mainscreen({ movie, videoId }: Props) {
             <Image src="/images/List.svg" alt="list" width={20} height={20} />
             More Watch Options
           </button>
+
+          <MovieSection />
         </div>
       </div>
     </div>

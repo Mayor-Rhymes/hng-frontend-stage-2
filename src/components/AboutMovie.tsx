@@ -9,7 +9,7 @@ interface Props {
 export default function About({ movie }: Props) {
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex justify-evenly items-center flex-wrap">
+      <div className="flex items-center flex-wrap text-[16px]">
         <p data-testid="movie-title" className="text-lg">
           {movie?.title}
         </p>
@@ -21,15 +21,18 @@ export default function About({ movie }: Props) {
         <p>PG-13</p>
         <Dot />
         <p data-testid="movie-runtime">{movie?.runtime}m</p>
+        
       </div>
 
-      <div className="flex justify-evenly ">
+      <div className="flex gap-2">
         {movie?.genres.map((genre) => (
-          <Tab key={genre.id} text={genre.name}/>
+          <Tab key={genre.id} text={genre.name} />
         ))}
       </div>
 
-      <p data-testid="movie-overview" className="lg:text-[20px]">{movie?.overview}</p>
+      <p data-testid="movie-overview" className="lg:text-[16px]">
+        {movie?.overview}
+      </p>
     </div>
   );
 }

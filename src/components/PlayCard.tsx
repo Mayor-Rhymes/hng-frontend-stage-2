@@ -1,6 +1,6 @@
 export default function PlayCard() {
   return (
-    <div className="flex group flex-col gap-4 py-4 justify-center items-center rounded-3xl border mx-5 justify-self-center border-videoRed">
+    <div className="flex group flex-col gap-4 py-4 justify-center items-center rounded-3xl border mx-5 justify-self-center border-videoRed bg-[#FCF5F7]">
       <h5 className="text-md font-semibold">
         Play movie quizes <br /> and earn <br /> free tickets
       </h5>
