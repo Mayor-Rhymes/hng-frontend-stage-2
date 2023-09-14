@@ -125,7 +125,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-between lg:px-10 mt-10 md:gap-0 lg:gap-0 items-center">
+      <div className="flex justify-between px-5 lg:px-10 mt-10 md:gap-0 lg:gap-0 items-center">
         <h4 className="text-2xl font-bold">Featured Movie</h4>
 
         <Link
