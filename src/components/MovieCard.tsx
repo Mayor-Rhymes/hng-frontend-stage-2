@@ -72,7 +72,7 @@ export default function Card({ movie }: MovieCardProps) {
             <p className="text-[10px]">97%</p>
           </div>
         </div>
-        <div className="text-slate-400 flex gap-4">
+        <div className="text-slate-400 flex flex-wrap gap-4">
           <GenreList />
         </div>
       </div>
