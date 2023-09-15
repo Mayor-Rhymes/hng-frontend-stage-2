@@ -68,7 +68,7 @@ export default function Page() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 mt-20">
             {data?.results.map((movie: IMovie) => (
-              <Card key={movie.id} movie={movie} />
+              <Card key={movie.id} movie={movie} testId={"movie-card"}/>
             ))}
           </div>
         )}
