@@ -31,7 +31,7 @@ export default function DescriptionBox() {
         the target of hit men and women everywhere.
       </p>
       <button
-        onClick={() => router.push("https://www.youtube.com/watch?v=M7XM597XO94&ab_channel=LionsgateMovies")}
+        // onClick={() => router.push("https://www.youtube.com/watch?v=M7XM597XO94&ab_channel=LionsgateMovies")}
         type="button"
         className="bg-[#BE123C] py-2 max-w-[50%] rounded-sm flex justify-center items-center gap-3 hover:bg-[#BE564F] transition-all"
       >
