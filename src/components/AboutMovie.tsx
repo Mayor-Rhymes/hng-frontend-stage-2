@@ -20,7 +20,8 @@ export default function About({ movie }: Props) {
         <Dot />
         <p>PG-13</p>
         <Dot />
-        <p data-testid="movie-runtime">{movie?.runtime}m</p>
+        <p>
+          <span data-testid="movie-runtime">{movie?.runtime}</span>m</p>
         
       </div>
 

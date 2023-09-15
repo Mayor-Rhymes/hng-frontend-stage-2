@@ -27,7 +27,7 @@ interface Genre {
 
 const URL = `${
   process.env.NEXT_PUBLIC_API_URL as string
-}movie/top_rated?language=en-US&page=1&`;
+}movie/top_rated?`;
 const TOKEN = process.env.NEXT_PUBLIC_API_TOKEN as string;
 
 const fetchHandler = async (url: string, token: string) => {
