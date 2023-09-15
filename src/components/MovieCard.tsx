@@ -30,7 +30,7 @@ export default function Card({ movie, testId }: MovieCardProps) {
         data-testid={testId}
       >
         <div
-          className="bg-center bg-no-repeat w-full h-[370px] relative rounded-md"
+          className="bg-center bg-no-repeat bg-cover w-full h-[370px] relative rounded-md"
           style={{
             backgroundImage: `${
               movie.poster_path
