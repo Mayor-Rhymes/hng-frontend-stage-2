@@ -12,9 +12,10 @@ const URL = process.env.NEXT_PUBLIC_API_URL as string;
 
 interface MovieCardProps {
   movie: IMovie;
+  testId: string;
 }
 
-export default function Card({ movie }: MovieCardProps) {
+export default function Card({ movie, testId }: MovieCardProps) {
   // console.log(movie.genres);
 
   const GenreList = () =>
@@ -26,7 +27,7 @@ export default function Card({ movie }: MovieCardProps) {
     <Link href={`movies/${movie.id}`}>
       <div
         className="flex flex-col px-3 py-3 gap-3 cursor-pointer hover:shadow-md transition-all"
-        data-testid="movie-card"
+        data-testid={testId}
       >
         <div
           className="bg-center bg-no-repeat w-full h-[370px] relative rounded-md"
